@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col">
+    @if (TempData["CreatedSuccess"] != null)
+    {
+        <p class="alert alert-success" id="successmessage">@TempData["CreatedSuccess"]</p>
+    }
+</div>
+

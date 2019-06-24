@@ -32,7 +32,7 @@ namespace IdentityRegistrationDemo.Data.DbEntities
         public string LGA { get; set; }
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm:ss tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [DisplayName("D.O.B")]
         public DateTime DateOfBirth { get; set; }
 
@@ -43,6 +43,7 @@ namespace IdentityRegistrationDemo.Data.DbEntities
 
         [Required]
         [DisplayName("Phone Number")]
+        [DataType(nameof(PhoneNumber))]
         public string PhoneNumber { get; set; }
 
         [Required]
@@ -67,6 +68,8 @@ namespace IdentityRegistrationDemo.Data.DbEntities
 
         [Required]
         public long BVN { get; set; }
+
+        public string NIN { get; set; }
 
 
     }
