@@ -3,10 +3,18 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="col">
-    @if (TempData["CreatedSuccess"] != null)
-    {
-        <p class="alert alert-success" id="successmessage">@TempData["CreatedSuccess"]</p>
-    }
-</div>
+    <div class="col">
+        @if (TempData["CreatedSuccess"] != null)
+        {
+            <p class="alert alert-success" id="successmessage">@TempData["CreatedSuccess"]</p>
+        }
+        @if (TempData["ExistingUser"] != null)
+        {
+            <p class="alert alert-warning" id="existingUser">@TempData["ExistingUser"]</p>
+        }
+        @if (TempData["Failed"] != null)
+        {
+            <p class="alert alert-warning" id="failed">@TempData["Failed"]</p>
+        }
+    </div>
 

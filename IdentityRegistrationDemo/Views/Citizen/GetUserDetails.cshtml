@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "GetUserDetails";
+}
+
+<h1>Enrollment Details</h1>
+
+<form asp-action="GetUserDetails" method="post">
+    <br />
+    <p>
+        Enter BVN: <input type="number" name="BVN" />
+    </p>
+    <br />
+    <div class="form-group">
+        <input type="submit" value="Get Enrollment Details " class="btn btn-primary" />
+    </div>
+</form>
+<div>
+    @if (TempData["Failed"] != null)
+    {
+        <p class="alert alert-warning" id="existingUser">@TempData["Failed"]</p>
+    }
+    @if (TempData["EmptyUserDetails"] != null)
+    {
+        <p class="alert alert-warning" id="emptyuserdetails">@TempData["EmptyUserDetails"]</p>
+    }
+</div>

@@ -24,19 +24,27 @@ namespace IdentityRegistrationDemo.Domain.Services
             _mapper = mapper;
             _logger = logger;
         }
+
+       
+
         public async  Task<CitizenResponse> CreateAsync(CitizensRequest citizensRequest)
         {
             var citizenToCreate = _mapper.Map<Citizen>(citizensRequest);
-
-            var citizenExist = _citizenRepository.IsExists(citizenToCreate.BVN);
-             if(citizenExist )
-            {
             var createdCitizen = await  _citizenRepository.CreateAsync(citizenToCreate);
             var createdCitizenResponse = _mapper.Map<CitizenResponse>(createdCitizen);
-            return createdCitizenResponse;
-            }
-              _logger.LogDebug("User Already Exist");
-            return null;
+            return createdCitizenResponse; 
+        }
+
+        public bool IsExist (long bvn)
+        {
+            return _citizenRepository.IsExists(bvn);
+        }
+
+        public async Task<CitizenResponse> SelectByBvnAsync(long bvn)
+        {
+           var citizen = await _citizenRepository.GetByBVNAsync(bvn);
+           var citizenResponse =  _mapper.Map<CitizenResponse>(citizen);
+            return citizenResponse;
         }
     }
 }

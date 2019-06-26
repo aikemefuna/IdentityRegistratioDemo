@@ -7,5 +7,6 @@ namespace IdentityRegistrationDemo.Data.Repository.Interface
     {
         Task<Citizen> CreateAsync(Citizen obj);
         bool IsExists(long bvn);
+        Task<Citizen> GetByBVNAsync(long bvn);
     }
 }

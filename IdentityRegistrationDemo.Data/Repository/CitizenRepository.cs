@@ -31,12 +31,8 @@ namespace IdentityRegistrationDemo.Data.Repository
 
         public bool IsExists(long bvn)
         {
-            var IsDuplicateBvn = _db.Citizens.Select(x => x.BVN == bvn);
-            if (IsDuplicateBvn != null)
-            {
-                return true;
-            }
-            else return false;
+            return  _db.Citizens.Any(x => x.BVN == bvn);
+           
         }
 
         public int RandomNumber(int min, int max)
@@ -69,6 +65,12 @@ namespace IdentityRegistrationDemo.Data.Repository
             builder.Append(RandomNumber(10000, 99999));
             builder.Append(RandomString(3, false));
             return builder.ToString();
+        }
+
+        public async Task<Citizen> GetByBVNAsync(long bvn)
+        {
+           var citizen = await   _db.Citizens.SingleOrDefaultAsync(c => c.BVN == bvn);
+            return citizen;
         }
     }
 }
